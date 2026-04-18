@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="en" class="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Master Pools — Raleigh, NC</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:         #1252a3;
+      --blue-dark:    #0b3270;
+      --blue-deep:    #071e4a;
+      --cyan:         #5ecfea;
+      --cyan-light:   #a8e8f5;
+      --orange:       #FF5A1F;
+      --orange-light: #FF8C5A;
+      --white:        #ffffff;
+      --offwhite:     #f4f8ff;
+      --text:         #0d1f3c;
+      --text-2:       #3a5278;
+      --radius:       14px;
+      --ease:         cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── LANGUAGE TOGGLE ── */
+    html.en .es { display: none !important; }
+    html.es .en { display: none !important; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 5%;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(7, 30, 74, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(94, 207, 234, 0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-logo-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-logo-name span:first-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .nav-logo-name span:last-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange-light) !important; color: #fff !important; }
+
+    .lang-btn {
+      background: rgba(94,207,234,0.15);
+      border: 1px solid rgba(94,207,234,0.35);
+      color: var(--cyan);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .lang-btn:hover { background: var(--cyan); color: var(--blue-deep); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--blue-deep);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 5% 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center 40%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(7,30,74,0.88) 0%, rgba(7,30,74,0.55) 60%, rgba(7,30,74,0.2) 100%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(94,207,234,0.08) 0%, transparent 60%);
+    }
+
+    .hero-waves {
+      position: absolute;
+      bottom: -2px;
+      left: 0; right: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 740px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(94,207,234,0.12);
+      border: 1px solid rgba(94,207,234,0.3);
+      color: var(--cyan);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s var(--ease) both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan);
+    }
+
+    .hero-headline {
+      font-size: clamp(4rem, 10vw, 9rem);
+      color: var(--white);
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s 0.1s var(--ease) both;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.8s 0.2s var(--ease) both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s var(--ease) both;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.85);
+      padding: 15px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 56px;
+      animation: fadeUp 0.8s 0.4s var(--ease) both;
+    }
+
+    .hero-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-strip {
+      background: var(--orange);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-inner {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 32px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .marquee-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 100px 5%; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--orange);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .section-tag::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--orange);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── TRUSTED BY ── */
+    .trusted {
+      background: #fff;
+      border-top: 1px solid #e8eef6;
+      border-bottom: 1px solid #e8eef6;
+      padding: 40px 0;
+    }
+    .trusted-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+    .trusted-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9bacc8;
+    }
+    .trusted-list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+    .trusted-item {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 28px;
+      border-right: 1px solid #dde4ef;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .trusted-item:last-child { border-right: none; }
+    .trusted-item:hover { opacity: 1; }
+    .trusted-item svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .trusted-list { gap: 12px; }
+      .trusted-item { border-right: none; padding: 6px 16px; font-size: 0.95rem; }
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--offwhite);
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-headline {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      color: var(--blue-deep);
+      margin-bottom: 28px;
+    }
+
+    .about-headline em {
+      font-style: normal;
+      color: var(--blue);
+    }
+
+    .about-body p {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .badge {
+      background: var(--blue-deep);
+      color: var(--cyan);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--blue-deep);
+      border-radius: 20px;
+      padding: 48px 40px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(94,207,234,0.08);
+    }
+
+    .about-card-stat {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--cyan);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .about-card-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 32px;
+    }
+
+    .about-card-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .about-card-items li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .about-card-items li::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(94,207,234,0.15);
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      background: var(--blue-deep);
+      position: relative;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services-headline {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+
+    .services-headline em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .services-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .services-groups {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .svc-group {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(94,207,234,0.12);
+      border-radius: 18px;
+      padding: 36px 32px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .svc-group:hover {
+      border-color: rgba(94,207,234,0.35);
+      background: rgba(94,207,234,0.05);
+    }
+
+    .svc-group-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(94,207,234,0.15);
+    }
+
+    .svc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .svc-item {
+      display: flex;
+      gap: 14px;
+    }
+
+    .svc-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,90,31,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .svc-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .svc-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.5;
+    }
+
+    .services-quote {
+      margin-top: 60px;
+      padding: 36px 40px;
+      background: rgba(255,90,31,0.08);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 14px 14px 0;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* ── VALUES ── */
+    .values {
+      background: var(--offwhite);
+    }
+
+    .values-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 56px;
+    }
+
+    .values-headline {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      color: var(--blue-deep);
+    }
+
+    .values-headline em {
+      font-style: normal;
+      color: var(--orange);
+    }
+
+    .values-sub {
+      font-size: 1rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .value-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 26px;
+      border: 1px solid rgba(18,82,163,0.1);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .value-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(18,82,163,0.12);
+    }
+
+    .value-icon {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .value-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--blue-deep);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .value-card:hover .value-title { color: var(--orange-light); }
+
+    .value-text {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-dark) 100%);
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(94,207,234,0.08) 0%, transparent 70%);
+    }
+
+    .cta-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    /* ── CONTACT ── */
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-headline {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      color: var(--blue-deep);
+      margin-bottom: 36px;
+    }
+
+    .contact-headline em {
+      font-style: normal;
+      color: var(--cyan);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--offwhite);
+      border: 1px solid rgba(18,82,163,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      margin-bottom: 4px;
+    }
+
+    .contact-item-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .contact-item-value a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .contact-item-value a:hover { color: var(--orange); }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-2);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      border: 1.5px solid rgba(18,82,163,0.15);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--offwhite);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      background: var(--blue-deep);
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .form-submit:hover { background: var(--blue); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--blue-deep);
+      padding: 60px 5% 36px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo img {
+      height: 52px;
+      width: auto;
+    }
+
+    .footer-logo-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .footer-logo-name span:first-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .footer-logo-name span:last-child {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .footer-tagline {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .footer-social a {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      font-size: 0.9rem;
+    }
+    .footer-social a:hover { background: var(--cyan); color: var(--blue-deep); }
+
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--cyan); }
+
+    .footer-verse {
+      text-align: center;
+      padding: 32px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-verse-cross {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+    .footer-verse-text {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.45);
+      max-width: 580px;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .footer-verse-ref {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.25);
+      font-style: normal;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+    }
+
+    .footer-designer {
+      text-align: center;
+      padding: 14px 0 4px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.22);
+    }
+    .footer-designer a {
+      color: var(--cyan);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .footer-designer a:hover { opacity: 1; }
+
+    /* ── TEAM PHOTO ── */
+    .about-team-photo {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      margin-top: 24px;
+      border: 3px solid rgba(94,207,234,0.25);
+    }
+
+    /* ── BEFORE / AFTER ── */
+    .results {
+      background: var(--blue-deep);
+    }
+    .results-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .results-headline {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .results-headline em { font-style: normal; color: var(--orange); }
+    .results-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    /* ── BEFORE/AFTER SLIDER ── */
+    .ba-slider-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .ba-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      aspect-ratio: 16/9;
+      cursor: col-resize;
+      user-select: none;
+      -webkit-user-select: none;
+      box-shadow: 0 24px 64px rgba(7,30,74,0.45);
+      border: 1px solid rgba(94,207,234,0.2);
+    }
+    .ba-side {
+      position: absolute;
+      inset: 0;
+    }
+    .ba-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      draggable: false;
+    }
+    .ba-before {
+      clip-path: inset(0 50% 0 0);
+      will-change: clip-path;
+    }
+    .ba-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .ba-divider::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    }
+    .ba-handle-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid rgba(7,30,74,0.12);
+      cursor: col-resize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(7,30,74,0.35);
+      pointer-events: all;
+      color: var(--blue-deep);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .ba-handle-btn:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0 8px 32px rgba(7,30,74,0.45);
+    }
+    .ba-handle-btn svg { width: 22px; height: 22px; }
+    .ba-pill {
+      position: absolute;
+      bottom: 20px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .before-pill {
+      left: 20px;
+      background: rgba(180,30,30,0.82);
+      color: #fff;
+    }
+    .after-pill {
+      right: 20px;
+      background: rgba(7,30,74,0.82);
+      color: var(--cyan);
+    }
+    .ba-hint {
+      text-align: center;
+      font-size: 0.85rem;
+      color: rgba(200,220,255,0.55);
+      margin-top: 16px;
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 600px) {
+      .ba-slider { aspect-ratio: 4/3; }
+      .ba-handle-btn { width: 42px; height: 42px; }
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      background: var(--offwhite);
+    }
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .gallery-headline {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      color: var(--blue-deep);
+      margin-bottom: 14px;
+    }
+    .gallery-headline em { font-style: normal; color: var(--blue); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease);
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(7,30,74,0);
+      transition: background 0.3s;
+    }
+    .gallery-item:hover::after { background: rgba(7,30,74,0.18); }
+
+    @media (max-width: 900px) {
+      .ba-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── REVIEWS ── */
+    .reviews {
+      padding: 96px 0;
+      background: #f0f6ff;
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .reviews-headline {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--blue-deep);
+      margin-bottom: 12px;
+    }
+    .reviews-headline em { font-style: normal; color: var(--blue); }
+    .reviews-sub {
+      font-size: 1.15rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .reviews-track-wrapper {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      width: max-content;
+      animation: scroll-reviews 36s linear infinite;
+    }
+    .reviews-track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes scroll-reviews {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-25%); }
+    }
+    .review-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(7,30,74,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 340px;
+      max-width: 340px;
+      cursor: default;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(7,30,74,0.15);
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .review-stars span {
+      font-size: 1.25rem;
+      color: #f5a623;
+    }
+    .review-text {
+      font-size: 0.97rem;
+      color: #374151;
+      line-height: 1.72;
+      flex: 1;
+    }
+    .review-text::before {
+      content: '"';
+      font-size: 2.4rem;
+      color: var(--blue);
+      line-height: 0;
+      vertical-align: -0.48rem;
+      margin-right: 4px;
+      font-family: Georgia, serif;
+    }
+    .review-author {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      border-top: 1px solid #e5eaf3;
+      padding-top: 16px;
+    }
+    .review-name {
+      font-weight: 700;
+      color: var(--blue-deep);
+      font-size: 0.95rem;
+    }
+    .review-meta {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid,
+      .values-header,
+      .contact-grid,
+      .services-groups { grid-template-columns: 1fr; gap: 40px; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .values-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="isotipo.png" alt="Blue Master Pools">
+    <div class="nav-logo-name">
+      <span>Blue Master</span>
+      <span>Pools</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services"><span class="en">Services</span><span class="es">Servicios</span></a></li>
+    <li><a href="#about"><span class="en">About</span><span class="es">Nosotros</span></a></li>
+    <li><a href="#gallery"><span class="en">Gallery</span><span class="es">Galería</span></a></li>
+    <li><a href="#reviews"><span class="en">Reviews</span><span class="es">Reseñas</span></a></li>
+    <li><a href="#contact" class="nav-cta"><span class="en">Get a Quote</span><span class="es">Cotizar</span></a></li>
+  </ul>
+  <button class="lang-btn" onclick="toggleLang()">
+    <span class="en">ES</span><span class="es">EN</span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="en">Raleigh, North Carolina</span>
+      <span class="es">Raleigh, Carolina del Norte</span>
+    </div>
+
+    <h1 class="hero-headline">
+      <span class="en">YOUR POOL.<br><em>CRYSTAL</em><br>CLEAR.</span>
+      <span class="es">TU PISCINA.<br><em>SIEMPRE</em><br>IMPECABLE.</span>
+    </h1>
+
+    <p class="hero-sub">
+      <span class="en">Professional pool cleaning and maintenance in Raleigh, NC. We keep your water perfect so you can enjoy every moment.</span>
+      <span class="es">Limpieza y mantenimiento profesional de piscinas en Raleigh, NC. Mantenemos tu agua perfecta para que disfrutes cada momento.</span>
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        <span class="en">Get a Free Quote</span>
+        <span class="es">Cotización Gratis</span>
+      </a>
+      <a href="#services" class="btn-secondary">
+        <span class="en">Our Services</span>
+        <span class="es">Nuestros Servicios</span>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">20+</div>
+        <div class="hero-stat-label">
+          <span class="en">Years of experience</span>
+          <span class="es">Años de experiencia</span>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">CPO</div>
+        <div class="hero-stat-label">
+          <span class="en">Certified</span>
+          <span class="es">Certificados</span>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">
+          <span class="en">Satisfaction</span>
+          <span class="es">Satisfacción</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="hero-waves" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FF5A1F" opacity="0.18"/>
+    <path d="M0,55 C480,20 960,75 1440,55 L1440,80 L0,80 Z" fill="#f4f8ff"/>
+  </svg>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <!-- repeated for seamless loop -->
+    <span class="marquee-item en">Weekly Cleaning <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Chemical Balancing <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Algae Treatment <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Equipment Inspection <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Filter Service <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Pool Opening &amp; Closing <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">CPO Certified <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">HOA &amp; Commercial <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Weekly Cleaning <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Chemical Balancing <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Algae Treatment <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Equipment Inspection <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Filter Service <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">Pool Opening &amp; Closing <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">CPO Certified <span class="marquee-dot"></span></span>
+    <span class="marquee-item en">HOA &amp; Commercial <span class="marquee-dot"></span></span>
+
+    <span class="marquee-item es">Limpieza Semanal <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Balance Químico <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Tratamiento de Algas <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Revisión de Equipos <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Limpieza de Filtros <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Apertura y Cierre <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Certificados CPO <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">HOA y Comercial <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Limpieza Semanal <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Balance Químico <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Tratamiento de Algas <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Revisión de Equipos <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Limpieza de Filtros <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Apertura y Cierre <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">Certificados CPO <span class="marquee-dot"></span></span>
+    <span class="marquee-item es">HOA y Comercial <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- ── TRUSTED BY ── -->
+<div class="trusted">
+  <div class="container">
+    <div class="trusted-inner">
+      <p class="trusted-label">
+        <span class="en">Trusted by communities across the Triangle</span>
+        <span class="es">La confianza de comunidades en el Triángulo</span>
+      </p>
+      <div class="trusted-list">
+        <div class="trusted-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="en">Devon HOA</span><span class="es">Devon HOA</span>
+        </div>
+        <div class="trusted-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="en">Heritage Pointe HOA</span><span class="es">Heritage Pointe HOA</span>
+        </div>
+        <div class="trusted-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="en">Chandler Place</span><span class="es">Chandler Place</span>
+        </div>
+        <div class="trusted-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="en">Stafford HOA</span><span class="es">Stafford HOA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="about-grid reveal">
+    <div class="about-body">
+      <div class="section-tag">
+        <span class="en">Who We Are</span>
+        <span class="es">Quiénes Somos</span>
+      </div>
+      <h2 class="about-headline">
+        <span class="en">WE TAKE CARE OF<br>YOUR POOL LIKE<br><em>IT'S OURS.</em></span>
+        <span class="es">CUIDAMOS TU<br>PISCINA COMO<br><em>SI FUERA NUESTRA.</em></span>
+      </h2>
+      <p>
+        <span class="en">Blue Master Pools is a family-owned pool service company based in Raleigh, NC, serving Raleigh, Durham, and the entire Triangle area. With over 20 years of experience, we have built a reputation for reliability, quality, and genuine care.</span>
+        <span class="es">Blue Master Pools es una empresa familiar de servicio de piscinas con sede en Raleigh, NC, atendiendo Raleigh, Durham y toda el área de Triangle. Con más de 20 años de experiencia, nos hemos ganado una reputación de confiabilidad, calidad y cuidado genuino.</span>
+      </p>
+      <p>
+        <span class="en">We are CPO (Certified Pool Operator) certified and fully insured, so you can trust that every visit meets the highest safety and health standards — whether it is your backyard pool, your HOA community pool, a fitness center, or any commercial facility.</span>
+        <span class="es">Somos operadores certificados CPO (Certified Pool Operator) y contamos con seguro completo, para que puedas confiar en que cada visita cumple los más altos estándares de seguridad y salud — ya sea tu piscina particular, la de tu comunidad, un gimnasio o cualquier instalación comercial.</span>
+      </p>
+      <div class="about-badges">
+        <span class="badge en">CPO Certified</span>
+        <span class="badge es">Certificados CPO</span>
+        <span class="badge en">Fully Insured</span>
+        <span class="badge es">Totalmente Asegurados</span>
+        <span class="badge en">20+ Years</span>
+        <span class="badge es">+20 Años</span>
+        <span class="badge en">HOA Specialists</span>
+        <span class="badge es">Especialistas HOA</span>
+        <span class="badge en">Family Owned</span>
+        <span class="badge es">Empresa Familiar</span>
+      </div>
+    </div>
+
+    <div class="about-visual">
+      <img src="team.jpg" alt="Blue Master Pools Team" class="about-team-photo reveal" style="--delay:0.1s" />
+      <div class="about-card" style="margin-top:24px;">
+        <div class="about-card-stat">20+</div>
+        <div class="about-card-label">
+          <span class="en">Years Serving the Triangle</span>
+          <span class="es">Años sirviendo al Triangle</span>
+        </div>
+        <ul class="about-card-items">
+          <li>
+            <span class="en">Raleigh, Durham &amp; Triangle area</span>
+            <span class="es">Raleigh, Durham y área de Triangle</span>
+          </li>
+          <li>
+            <span class="en">Residential &amp; commercial pools</span>
+            <span class="es">Piscinas residenciales y comerciales</span>
+          </li>
+          <li>
+            <span class="en">HOA &amp; fitness center specialists</span>
+            <span class="es">Especialistas en HOA y gimnasios</span>
+          </li>
+          <li>
+            <span class="en">Health dept. regulation compliant</span>
+            <span class="es">Cumplimiento normativa sanitaria</span>
+          </li>
+          <li>
+            <span class="en">Licensed, certified &amp; insured</span>
+            <span class="es">Licenciados, certificados y asegurados</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESULTS / BEFORE-AFTER ── -->
+<section class="results" id="results">
+  <div class="results-header reveal">
+    <div class="section-tag" style="justify-content:center; color:var(--cyan);">
+      <span class="en">Real Results</span>
+      <span class="es">Resultados Reales</span>
+    </div>
+    <h2 class="results-headline">
+      <span class="en">GREEN TO <em>CRYSTAL CLEAR.</em></span>
+      <span class="es">DE VERDE A <em>CRISTALINA.</em></span>
+    </h2>
+    <p class="results-sub">
+      <span class="en">See what we do. These are real pools we've transformed — before and after.</span>
+      <span class="es">Mira lo que hacemos. Estas son piscinas reales que hemos transformado — antes y después.</span>
+    </p>
+  </div>
+  <div class="ba-slider-wrap reveal">
+    <div class="ba-slider" id="baSlider">
+
+      <!-- After (bottom layer — full width) -->
+      <div class="ba-side ba-after">
+        <img src="after-pool.jpg" alt="Pool after Blue Master Pools treatment — crystal clear" draggable="false" />
+        <span class="ba-pill after-pill">
+          <span class="en">After</span><span class="es">Después</span>
+        </span>
+      </div>
+
+      <!-- Before (top layer — clipped) -->
+      <div class="ba-side ba-before">
+        <img src="before-pool.jpg" alt="Pool before treatment — covered in algae" draggable="false" />
+        <span class="ba-pill before-pill">
+          <span class="en">Before</span><span class="es">Antes</span>
+        </span>
+      </div>
+
+      <!-- Divider handle -->
+      <div class="ba-divider" id="baDivider">
+        <button class="ba-handle-btn" aria-label="Drag to compare before and after">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/><polyline points="9 18 3 12 9 6" transform="translate(6,0)"/>
+            <polyline points="9 18 15 12 9 6" transform="translate(0,0)"/><polyline points="15 18 21 12 15 6"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+    <p class="ba-hint">
+      <span class="en">← Drag to compare before &amp; after →</span>
+      <span class="es">← Arrastra para comparar antes y después →</span>
+    </p>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div class="section-tag" style="justify-content:center;">
+      <span class="en">What We Do</span>
+      <span class="es">Lo Que Hacemos</span>
+    </div>
+    <h2 class="services-headline">
+      <span class="en">EVERYTHING YOUR<br>POOL <em>NEEDS.</em></span>
+      <span class="es">TODO LO QUE<br>TU PISCINA <em>NECESITA.</em></span>
+    </h2>
+    <p class="services-sub">
+      <span class="en">From weekly maintenance to full seasonal care and commercial compliance — we handle it all.</span>
+      <span class="es">Desde mantenimiento semanal hasta cuidado estacional completo y cumplimiento comercial — nosotros lo manejamos todo.</span>
+    </p>
+  </div>
+
+  <div class="services-groups reveal">
+
+    <!-- Group 1: Core Maintenance -->
+    <div class="svc-group">
+      <div class="svc-group-title">
+        <span class="en">Core Maintenance</span>
+        <span class="es">Mantenimiento Esencial</span>
+      </div>
+      <ul class="svc-list">
+        <li class="svc-item">
+          <div class="svc-icon">🧹</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Weekly Cleaning</span>
+              <span class="es">Limpieza Semanal</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Skimming, brushing, vacuuming, and debris removal on a consistent schedule so your pool is always ready.</span>
+              <span class="es">Desnatado, cepillado, aspirado y retiro de residuos en horario constante para que tu piscina siempre esté lista.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">🧪</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Chemical Balancing</span>
+              <span class="es">Balance Químico</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Precise testing and adjustment of pH, chlorine, alkalinity, and sanitizer levels for safe, crystal-clear water.</span>
+              <span class="es">Pruebas y ajustes precisos de pH, cloro, alcalinidad y sanitizante para un agua segura y cristalina.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">🟢</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Algae Treatment</span>
+              <span class="es">Tratamiento de Algas</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Full shock treatment and algae elimination to restore clarity and prevent future growth.</span>
+              <span class="es">Tratamiento de choque completo y eliminación de algas para restaurar la claridad y prevenir su reaparición.</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Group 2: Seasonal -->
+    <div class="svc-group">
+      <div class="svc-group-title">
+        <span class="en">Seasonal Care</span>
+        <span class="es">Cuidado Estacional</span>
+      </div>
+      <ul class="svc-list">
+        <li class="svc-item">
+          <div class="svc-icon">🌸</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Pool Opening</span>
+              <span class="es">Apertura de Temporada</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Full spring opening: remove cover, start equipment, balance chemistry, and get your pool swim-ready.</span>
+              <span class="es">Apertura completa en primavera: retiro de cubierta, arranque de equipos, balance químico y piscina lista para nadar.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">❄️</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Pool Closing / Winterization</span>
+              <span class="es">Cierre e Invernación</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Proper fall winterization to protect your equipment, plumbing, and surfaces through the cold months.</span>
+              <span class="es">Invernación correcta en otoño para proteger equipos, tuberías y superficies durante los meses fríos.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">🔍</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Seasonal Inspections</span>
+              <span class="es">Inspecciones Estacionales</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Comprehensive checks at season transitions to catch issues before they become costly problems.</span>
+              <span class="es">Revisiones completas en cambios de temporada para detectar problemas antes de que se vuelvan costosos.</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Group 3: Commercial & Compliance -->
+    <div class="svc-group">
+      <div class="svc-group-title">
+        <span class="en">Commercial &amp; Compliance</span>
+        <span class="es">Comercial y Cumplimiento</span>
+      </div>
+      <ul class="svc-list">
+        <li class="svc-item">
+          <div class="svc-icon">🏢</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">HOA &amp; Community Pools</span>
+              <span class="es">Piscinas HOA y Comunitarias</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Reliable service contracts for homeowner associations, keeping shared pools safe for every resident.</span>
+              <span class="es">Contratos de servicio confiables para asociaciones de propietarios, manteniendo las piscinas compartidas seguras para todos.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">🏋️</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Fitness Centers</span>
+              <span class="es">Gimnasios y Centros Deportivos</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Commercial-grade maintenance for fitness facilities — consistent, compliant, and professionally documented.</span>
+              <span class="es">Mantenimiento de nivel comercial para instalaciones deportivas — constante, conforme y con documentación profesional.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">📋</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Health Dept. Compliance</span>
+              <span class="es">Cumplimiento Sanitario</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">We keep your facility in full compliance with NC health department regulations — no surprises on inspection day.</span>
+              <span class="es">Mantenemos tu instalación en pleno cumplimiento con las regulaciones sanitarias de NC — sin sorpresas el día de inspección.</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Group 4: Equipment & Systems -->
+    <div class="svc-group">
+      <div class="svc-group-title">
+        <span class="en">Equipment &amp; Systems</span>
+        <span class="es">Equipos y Sistemas</span>
+      </div>
+      <ul class="svc-list">
+        <li class="svc-item">
+          <div class="svc-icon">⚙️</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Equipment Check</span>
+              <span class="es">Revisión de Equipos</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Inspection of pumps, filters, heaters, and circulation systems to catch issues before they become costly repairs.</span>
+              <span class="es">Inspección de bombas, filtros, calentadores y sistemas de circulación para detectar problemas a tiempo.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">💧</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Filter Cleaning</span>
+              <span class="es">Limpieza de Filtros</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">Deep cleaning of cartridge, sand, and DE filters to keep water flowing clean and your system running efficiently.</span>
+              <span class="es">Limpieza profunda de filtros de cartucho, arena y DE para mantener el agua limpia y el sistema funcionando eficientemente.</span>
+            </div>
+          </div>
+        </li>
+        <li class="svc-item">
+          <div class="svc-icon">🔧</div>
+          <div>
+            <div class="svc-name">
+              <span class="en">Minor Repairs &amp; Referrals</span>
+              <span class="es">Reparaciones Menores</span>
+            </div>
+            <div class="svc-desc">
+              <span class="en">We handle minor equipment fixes on the spot and connect you with trusted specialists for larger repairs.</span>
+              <span class="es">Manejamos reparaciones menores en el momento y te conectamos con especialistas de confianza para trabajos mayores.</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="services-quote reveal">
+    <span class="en">We don't just maintain pools — we protect your investment, ensure compliance, and create safe environments for every community.</span>
+    <span class="es">No solo mantenemos piscinas — protegemos tu inversión, garantizamos el cumplimiento normativo y creamos ambientes seguros para cada comunidad.</span>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section class="values" id="values">
+  <div class="values-header reveal">
+    <div>
+      <div class="section-tag">
+        <span class="en">Why Choose Us</span>
+        <span class="es">Por Qué Elegirnos</span>
+      </div>
+      <h2 class="values-headline">
+        <span class="en">WE DO IT<br><em>RIGHT.</em></span>
+        <span class="es">LO HACEMOS<br><em>BIEN.</em></span>
+      </h2>
+    </div>
+    <p class="values-sub">
+      <span class="en">Over two decades of experience, a team that shows up, and a commitment to quality that never wavers — that is what sets Blue Master Pools apart.</span>
+      <span class="es">Más de dos décadas de experiencia, un equipo que siempre aparece y un compromiso con la calidad que nunca cede — eso es lo que distingue a Blue Master Pools.</span>
+    </p>
+  </div>
+
+  <div class="values-grid reveal">
+    <div class="value-card">
+      <div class="value-icon">🕐</div>
+      <div class="value-title">
+        <span class="en">Reliability</span>
+        <span class="es">Puntualidad</span>
+      </div>
+      <p class="value-text">
+        <span class="en">We show up on time, every time. Your schedule matters — no surprises, no excuses.</span>
+        <span class="es">Llegamos a tiempo, siempre. Tu horario importa — sin sorpresas, sin excusas.</span>
+      </p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">⭐</div>
+      <div class="value-title">
+        <span class="en">Quality</span>
+        <span class="es">Calidad</span>
+      </div>
+      <p class="value-text">
+        <span class="en">We never cut corners. Every job is done thoroughly using professional-grade products and equipment.</span>
+        <span class="es">Nunca tomamos atajos. Cada trabajo se hace a fondo con productos y equipos de nivel profesional.</span>
+      </p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💬</div>
+      <div class="value-title">
+        <span class="en">Transparency</span>
+        <span class="es">Transparencia</span>
+      </div>
+      <p class="value-text">
+        <span class="en">Clear pricing, honest assessments, no hidden fees. You always know exactly what you are paying for.</span>
+        <span class="es">Precios claros, evaluaciones honestas, sin cargos ocultos. Siempre sabes exactamente lo que estás pagando.</span>
+      </p>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">❤️</div>
+      <div class="value-title">
+        <span class="en">Care</span>
+        <span class="es">Compromiso</span>
+      </div>
+      <p class="value-text">
+        <span class="en">Family-owned and community-driven. We treat every pool — and every client — with the care they deserve.</span>
+        <span class="es">Empresa familiar y orientada a la comunidad. Tratamos cada piscina — y cada cliente — con el cuidado que merece.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── REVIEWS ── -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <h2 class="reviews-headline">
+        <span class="en">What Our <em>Customers</em> Say</span>
+        <span class="es">Lo Que Dicen Nuestros <em>Clientes</em></span>
+      </h2>
+      <p class="reviews-sub">
+        <span class="en">Real reviews from real pool owners across the Triangle.</span>
+        <span class="es">Reseñas reales de propietarios de piscinas en el Triángulo.</span>
+      </p>
+    </div>
+  </div>
+  <div class="reviews-track-wrapper">
+    <div class="reviews-track" aria-hidden="false">
+
+      <!-- ── Set 1 ── -->
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">This company is the best! Customer service is 100%. Work ethic is 100%. I have worked with the owner for many years and I will use this pool company as long as I have a pool! Highly recommend them!!!!!</span>
+          <span class="es">¡Esta empresa es la mejor! El servicio al cliente es 100%. La ética de trabajo es 100%. He trabajado con el dueño durante muchos años y usaré esta empresa mientras tenga una piscina. ¡Los recomiendo muchísimo!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Robyn H.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">There should be MORE stars to rate this excellent business. Top quality, personal service. Ernesto takes such pride in what he does and our community cherishes him as a businessman and a friend.</span>
+          <span class="es">Debería haber MÁS estrellas para calificar este excelente negocio. Calidad de primera, servicio personalizado. Ernesto se enorgullece de lo que hace y nuestra comunidad lo aprecia como empresario y amigo.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Melissa S.</span>
+          <span class="review-meta"><span class="en">Raleigh, NC · Pool Maintenance</span><span class="es">Raleigh, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">We really appreciate the excellent job you did for the Stafford community this summer. Everyone was very complementary and appreciative. We look forward to seeing you soon.</span>
+          <span class="es">Apreciamos mucho el excelente trabajo que hiciste para la comunidad de Stafford este verano. Todos quedaron muy agradecidos y contentos. Esperamos verte pronto.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Bobby V.</span>
+          <span class="review-meta"><span class="en">Stafford Community · Pool Service</span><span class="es">Comunidad Stafford · Servicio de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">They are wonderful!!!!</span>
+          <span class="es">¡Son maravillosos!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Paige W. B.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <!-- ── Sets 2-4 (duplicates for seamless loop) ── -->
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">This company is the best! Customer service is 100%. Work ethic is 100%. I have worked with the owner for many years and I will use this pool company as long as I have a pool! Highly recommend them!!!!!</span>
+          <span class="es">¡Esta empresa es la mejor! El servicio al cliente es 100%. La ética de trabajo es 100%. He trabajado con el dueño durante muchos años y usaré esta empresa mientras tenga una piscina. ¡Los recomiendo muchísimo!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Robyn H.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">There should be MORE stars to rate this excellent business. Top quality, personal service. Ernesto takes such pride in what he does and our community cherishes him as a businessman and a friend.</span>
+          <span class="es">Debería haber MÁS estrellas para calificar este excelente negocio. Calidad de primera, servicio personalizado. Ernesto se enorgullece de lo que hace y nuestra comunidad lo aprecia como empresario y amigo.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Melissa S.</span>
+          <span class="review-meta"><span class="en">Raleigh, NC · Pool Maintenance</span><span class="es">Raleigh, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">We really appreciate the excellent job you did for the Stafford community this summer. Everyone was very complementary and appreciative. We look forward to seeing you soon.</span>
+          <span class="es">Apreciamos mucho el excelente trabajo que hiciste para la comunidad de Stafford este verano. Todos quedaron muy agradecidos y contentos. Esperamos verte pronto.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Bobby V.</span>
+          <span class="review-meta"><span class="en">Stafford Community · Pool Service</span><span class="es">Comunidad Stafford · Servicio de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">They are wonderful!!!!</span>
+          <span class="es">¡Son maravillosos!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Paige W. B.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">This company is the best! Customer service is 100%. Work ethic is 100%. I have worked with the owner for many years and I will use this pool company as long as I have a pool! Highly recommend them!!!!!</span>
+          <span class="es">¡Esta empresa es la mejor! El servicio al cliente es 100%. La ética de trabajo es 100%. He trabajado con el dueño durante muchos años y usaré esta empresa mientras tenga una piscina. ¡Los recomiendo muchísimo!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Robyn H.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">There should be MORE stars to rate this excellent business. Top quality, personal service. Ernesto takes such pride in what he does and our community cherishes him as a businessman and a friend.</span>
+          <span class="es">Debería haber MÁS estrellas para calificar este excelente negocio. Calidad de primera, servicio personalizado. Ernesto se enorgullece de lo que hace y nuestra comunidad lo aprecia como empresario y amigo.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Melissa S.</span>
+          <span class="review-meta"><span class="en">Raleigh, NC · Pool Maintenance</span><span class="es">Raleigh, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">We really appreciate the excellent job you did for the Stafford community this summer. Everyone was very complementary and appreciative. We look forward to seeing you soon.</span>
+          <span class="es">Apreciamos mucho el excelente trabajo que hiciste para la comunidad de Stafford este verano. Todos quedaron muy agradecidos y contentos. Esperamos verte pronto.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Bobby V.</span>
+          <span class="review-meta"><span class="en">Stafford Community · Pool Service</span><span class="es">Comunidad Stafford · Servicio de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">They are wonderful!!!!</span>
+          <span class="es">¡Son maravillosos!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Paige W. B.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">This company is the best! Customer service is 100%. Work ethic is 100%. I have worked with the owner for many years and I will use this pool company as long as I have a pool! Highly recommend them!!!!!</span>
+          <span class="es">¡Esta empresa es la mejor! El servicio al cliente es 100%. La ética de trabajo es 100%. He trabajado con el dueño durante muchos años y usaré esta empresa mientras tenga una piscina. ¡Los recomiendo muchísimo!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Robyn H.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">There should be MORE stars to rate this excellent business. Top quality, personal service. Ernesto takes such pride in what he does and our community cherishes him as a businessman and a friend.</span>
+          <span class="es">Debería haber MÁS estrellas para calificar este excelente negocio. Calidad de primera, servicio personalizado. Ernesto se enorgullece de lo que hace y nuestra comunidad lo aprecia como empresario y amigo.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Melissa S.</span>
+          <span class="review-meta"><span class="en">Raleigh, NC · Pool Maintenance</span><span class="es">Raleigh, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">We really appreciate the excellent job you did for the Stafford community this summer. Everyone was very complementary and appreciative. We look forward to seeing you soon.</span>
+          <span class="es">Apreciamos mucho el excelente trabajo que hiciste para la comunidad de Stafford este verano. Todos quedaron muy agradecidos y contentos. Esperamos verte pronto.</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Bobby V.</span>
+          <span class="review-meta"><span class="en">Stafford Community · Pool Service</span><span class="es">Comunidad Stafford · Servicio de piscina</span></span>
+        </div>
+      </div>
+
+      <div class="review-card" aria-hidden="true">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">
+          <span class="en">They are wonderful!!!!</span>
+          <span class="es">¡Son maravillosos!</span>
+        </p>
+        <div class="review-author">
+          <span class="review-name">Paige W. B.</span>
+          <span class="review-meta"><span class="en">Wake Forest, NC · Pool Maintenance</span><span class="es">Wake Forest, NC · Mantenimiento de piscina</span></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <div class="section-tag" style="justify-content:center;">
+      <span class="en">Our Work</span>
+      <span class="es">Nuestro Trabajo</span>
+    </div>
+    <h2 class="gallery-headline">
+      <span class="en">POOLS WE <em>KEEP PERFECT.</em></span>
+      <span class="es">PISCINAS QUE <em>MANTENEMOS PERFECTAS.</em></span>
+    </h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <img src="pool-1.jpg" alt="Community pool at sunset" />
+    </div>
+    <div class="gallery-item">
+      <img src="pool-2.jpg" alt="Residential pool with gazebo" />
+    </div>
+    <div class="gallery-item">
+      <img src="pool-3.jpg" alt="Stafford community pool" />
+    </div>
+    <div class="gallery-item">
+      <img src="pool-4.jpg" alt="Community pool sunny day" />
+    </div>
+    <div class="gallery-item">
+      <img src="pool-5.jpg" alt="Pool with mosaic design" />
+    </div>
+    <div class="gallery-item">
+      <img src="pool-6.jpg" alt="Blue Master Pools CPO service" />
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <p class="cta-text">
+    <span class="en">Ready for a cleaner pool?</span>
+    <span class="es">¿Listo para una piscina más limpia?</span>
+  </p>
+  <a href="#contact" class="btn-primary">
+    <span class="en">Let's Talk</span>
+    <span class="es">Hablemos</span>
+  </a>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="contact-grid">
+
+    <div class="reveal">
+      <div class="section-tag">
+        <span class="en">Contact Us</span>
+        <span class="es">Contáctanos</span>
+      </div>
+      <h2 class="contact-headline">
+        <span class="en">LET'S KEEP IT<br><em>CLEAN.</em></span>
+        <span class="es">HABLEMOS<br>Y <em>LIMPIAMOS.</em></span>
+      </h2>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div>
+            <div class="contact-item-label">
+              <span class="en">Location</span>
+              <span class="es">Ubicación</span>
+            </div>
+            <div class="contact-item-value">Raleigh, NC — Triangle Area</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div>
+            <div class="contact-item-label">
+              <span class="en">Phone</span>
+              <span class="es">Teléfono</span>
+            </div>
+            <div class="contact-item-value">
+              <a href="tel:+19193685496">(919) 368-5496</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div>
+            <div class="contact-item-label">
+              <span class="en">Email</span>
+              <span class="es">Correo</span>
+            </div>
+            <div class="contact-item-value">
+              <a href="mailto:bluemasterpools@gmail.com">bluemasterpools@gmail.com</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div>
+            <div class="contact-item-label">
+              <span class="en">Hours</span>
+              <span class="es">Horario</span>
+            </div>
+            <div class="contact-item-value">
+              <span class="en">Mon – Sat, 7am – 6pm</span>
+              <span class="es">Lun – Sáb, 7am – 6pm</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📘</div>
+          <div>
+            <div class="contact-item-label">Facebook</div>
+            <div class="contact-item-value">
+              <a href="https://facebook.com/bluemasterpools" target="_blank" rel="noopener">Blue Master Pools</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <form class="contact-form" action="https://formspree.io/f/xaqaolbr" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>
+              <span class="en">First Name</span>
+              <span class="es">Nombre</span>
+            </label>
+            <input type="text" name="first_name" required>
+          </div>
+          <div class="form-group">
+            <label>
+              <span class="en">Last Name</span>
+              <span class="es">Apellido</span>
+            </label>
+            <input type="text" name="last_name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label>
+              <span class="en">Phone</span>
+              <span class="es">Teléfono</span>
+            </label>
+            <input type="tel" name="phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>
+            <span class="en">Service Needed</span>
+            <span class="es">Servicio Requerido</span>
+          </label>
+          <select name="service">
+            <option value="" disabled selected>
+              <span class="en">Select a service</span>
+            </option>
+            <option class="en" value="weekly">Weekly Cleaning</option>
+            <option class="en" value="chemicals">Chemical Balancing</option>
+            <option class="en" value="algae">Algae Treatment</option>
+            <option class="en" value="opening">Pool Opening</option>
+            <option class="en" value="closing">Pool Closing</option>
+            <option class="en" value="equipment">Equipment Check</option>
+            <option class="en" value="filter">Filter Cleaning</option>
+            <option class="en" value="hoa">HOA / Commercial</option>
+            <option class="en" value="other">Other</option>
+            <option class="es" value="weekly">Limpieza Semanal</option>
+            <option class="es" value="chemicals">Balance Químico</option>
+            <option class="es" value="algae">Tratamiento de Algas</option>
+            <option class="es" value="opening">Apertura de Piscina</option>
+            <option class="es" value="closing">Cierre e Invernación</option>
+            <option class="es" value="equipment">Revisión de Equipos</option>
+            <option class="es" value="filter">Limpieza de Filtros</option>
+            <option class="es" value="hoa">HOA / Comercial</option>
+            <option class="es" value="other">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>
+            <span class="en">Message</span>
+            <span class="es">Mensaje</span>
+          </label>
+          <textarea name="message" placeholder=""></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          <span class="en">Send Message</span>
+          <span class="es">Enviar Mensaje</span>
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="isotipo.png" alt="Blue Master Pools">
+        <div class="footer-logo-name">
+          <span>Blue Master</span>
+          <span>Pools</span>
+        </div>
+      </div>
+      <p class="footer-tagline">
+        <span class="en">Keeping Raleigh's pools clean, safe, and beautiful — one visit at a time.</span>
+        <span class="es">Manteniendo las piscinas de Raleigh limpias, seguras y hermosas — visita a visita.</span>
+      </p>
+      <div class="footer-social">
+        <a href="https://facebook.com/bluemasterpools" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>
+        <span class="en">Services</span>
+        <span class="es">Servicios</span>
+      </h4>
+      <ul>
+        <li><a href="#services"><span class="en">Weekly Cleaning</span><span class="es">Limpieza Semanal</span></a></li>
+        <li><a href="#services"><span class="en">Chemical Balancing</span><span class="es">Balance Químico</span></a></li>
+        <li><a href="#services"><span class="en">Pool Opening &amp; Closing</span><span class="es">Apertura y Cierre</span></a></li>
+        <li><a href="#services"><span class="en">HOA &amp; Commercial</span><span class="es">HOA y Comercial</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>
+        <span class="en">Company</span>
+        <span class="es">Empresa</span>
+      </h4>
+      <ul>
+        <li><a href="#about"><span class="en">About Us</span><span class="es">Nosotros</span></a></li>
+        <li><a href="#values"><span class="en">Our Values</span><span class="es">Nuestros Valores</span></a></li>
+        <li><a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a></li>
+        <li><a href="tel:+19193685496">(919) 368-5496</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-verse">
+    <span class="footer-verse-cross">✝</span>
+    <blockquote class="footer-verse-text">
+      <span class="en">"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</span>
+      <span class="es">"Porque tanto amó Dios al mundo, que dio a su Hijo unigénito, para que todo el que cree en él no se pierda, sino que tenga vida eterna."</span>
+    </blockquote>
+    <cite class="footer-verse-ref">— John 3:16 / Juan 3:16</cite>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2025 Blue Master Pools. <span class="en">All rights reserved.</span><span class="es">Todos los derechos reservados.</span></span>
+    <span>
+      <span class="en">Professional pool care you can trust.</span>
+      <span class="es">Cuidado profesional de piscinas en el que puedes confiar.</span>
+    </span>
+  </div>
+
+  <div class="footer-designer">
+    <span class="en">Need a website like this? <a href="mailto:xristakiksp@gmail.com">Let's talk →</a></span>
+    <span class="es">¿Necesitas una página como esta? <a href="mailto:xristakiksp@gmail.com">Escríbeme →</a></span>
+  </div>
+</footer>
+
+<script>
+  // ── LANGUAGE TOGGLE ──
+  function toggleLang() {
+    const html = document.documentElement;
+    html.classList.toggle('en');
+    html.classList.toggle('es');
+    html.lang = html.classList.contains('es') ? 'es' : 'en';
+  }
+
+  // ── SCROLL REVEAL ──
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── FORM HANDLER (placeholder) ──
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    const orig = btn.innerHTML;
+    btn.innerHTML = document.documentElement.classList.contains('es')
+      ? '<span class="es">¡Enviado!</span>'
+      : '<span class="en">Sent!</span>';
+    btn.style.background = '#1252a3';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 3000);
+  }
+
+  /* ── Before/After Slider ── */
+  (function () {
+    const slider  = document.getElementById('baSlider');
+    const divider = document.getElementById('baDivider');
+    const before  = slider ? slider.querySelector('.ba-before') : null;
+    if (!slider || !before) return;
+
+    let dragging = false;
+    let pending  = null;
+    let lastX    = null;
+
+    function applyPos(clientX) {
+      const rect = slider.getBoundingClientRect();
+      const pct  = Math.max(2, Math.min(98, (clientX - rect.left) / rect.width * 100));
+      before.style.clipPath = `inset(0 ${(100 - pct).toFixed(3)}% 0 0)`;
+      divider.style.left    = pct.toFixed(3) + '%';
+      pending = null;
+    }
+
+    function scheduleUpdate(clientX) {
+      lastX = clientX;
+      if (pending) return;
+      pending = requestAnimationFrame(() => applyPos(lastX));
+    }
+
+    slider.addEventListener('mousedown', e => {
+      dragging = true;
+      e.preventDefault();
+      scheduleUpdate(e.clientX);
+    });
+    window.addEventListener('mousemove', e => { if (dragging) scheduleUpdate(e.clientX); });
+    window.addEventListener('mouseup',   () => { dragging = false; });
+
+    slider.addEventListener('touchstart', e => {
+      dragging = true;
+      scheduleUpdate(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchmove', e => {
+      if (dragging) {
+        e.preventDefault();
+        scheduleUpdate(e.touches[0].clientX);
+      }
+    }, { passive: false });
+    window.addEventListener('touchend', () => { dragging = false; });
+  })();
+</script>
+</body>
+</html>
